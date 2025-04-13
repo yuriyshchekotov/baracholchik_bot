@@ -2,6 +2,8 @@ const { Telegraf } = require('telegraf');
 const startCommand = require('./handlers/start');
 const helpCommand = require('./handlers/help');
 const { message } = require('telegraf/filters');
+const subscribeCommand = require('./handlers/subscribe');
+const notifyCommand = require('./handlers/notify');
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
 const { saveMessage } = require('./db/messages');
@@ -9,6 +11,8 @@ const { saveMessage } = require('./db/messages');
 // Команды
 bot.start(startCommand);
 bot.help(helpCommand);
+bot.command('subscribe', subscribeCommand); // Не уверен, что здесь должно быть
+bot.command('notify', notifyCommand);// Не уверен, что здесь должно быть
 
 bot.on(message('text'), (ctx, next) => {
     const text = ctx.message.text;
