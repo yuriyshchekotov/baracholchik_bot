@@ -3,6 +3,8 @@ const path = require('path');
 const { loadMessages } = require('../db/messages');
 
 module.exports = (ctx) => {
+    console.log('🔍 ctx.message.text:', ctx.message.text);
+    console.log('🔍 args:', ctx.message.text.split(' ').slice(1));
     const input = ctx.message.text.split(' ').slice(1); // убираем "/search"
     if (input.length === 0) return ctx.reply('Укажи ключевые слова: /search <слова>');
 

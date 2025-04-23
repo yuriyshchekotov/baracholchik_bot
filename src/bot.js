@@ -14,7 +14,6 @@ bot.start(startCommand);
 bot.help(helpCommand);
 bot.command('subscribe', subscribeCommand);
 bot.command('notify', notifyCommand);
-
 bot.command('search', searchCommand);
 
 bot.on(message('text'), (ctx, next) => {
