@@ -34,4 +34,5 @@ function getLatestMessages(count = 5) {
 module.exports = {
     saveMessage,
     getLatestMessages,
+    loadMessages
 };
