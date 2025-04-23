@@ -4,15 +4,17 @@ const { loadMessages } = require('../db/messages');
 
 module.exports = (ctx) => {
     const input = ctx.message.text.split(' ').slice(1); // убираем "/search"
-    console.log('🔍 ctx.message.text:', ctx.message.text);
-    console.log('🔍 args:', input);
-
     if (input.length === 0) {
         return ctx.reply('Укажи ключевые слова: /search <слова>');
     }
 
-    const mode = (input[0] === '--and' || input[0] === '--or') ? input[0].substring(2) : 'or';
-    const keywords = (mode === 'or' || mode === 'and') ? input.slice(1) : input;
+    let mode = 'or';
+    let keywords = input;
+
+    if (input[0] === '--and' || input[0] === '--or') {
+        mode = input[0].substring(2);
+        keywords = input.slice(1);
+    }
 
     if (keywords.length === 0) {
         return ctx.reply('Укажи хотя бы одно слово для поиска');
