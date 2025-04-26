@@ -25,7 +25,7 @@ module.exports = async (ctx) => {
 
     const results = await Promise.allSettled(
         recipients.map(user =>
-            ctx.telegram.sendMessage(user.id, `Найдено новое сообщение: ${messageText}`)
+            user.notify(ctx, `Найдено новое сообщение: ${messageText}`)
         )
     );
 

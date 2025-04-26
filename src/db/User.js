@@ -14,8 +14,9 @@ class User {
         this.filters = this.filters.filter(id => id !== filterId);
     }
 
-    notify(message) {
+    async notify(ctx, message) {
         console.log(`Notify user ${this.id}: ${message}`);
+        await ctx.telegram.sendMessage(this.id, message);
     }
 
     hasFilter(filterId) {
