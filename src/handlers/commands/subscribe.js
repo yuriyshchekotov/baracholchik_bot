@@ -1,5 +1,5 @@
-const userManager = require('../db/UserManager');
-const filterManager = require('../db/FilterManager');
+const userManager = require('../../db/UserManager');
+const filterManager = require('../../db/FilterManager');
 
 function generateFilterName(keywords, conjunction) {
     if (keywords.length === 1) return keywords[0];

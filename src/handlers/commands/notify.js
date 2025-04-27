@@ -1,5 +1,5 @@
-const userManager = require('../db/UserManager');
-const filterManager = require('../db/FilterManager');
+const userManager = require('../../db/UserManager');
+const filterManager = require('../../db/FilterManager');
 
 module.exports = async (ctx) => {
     const messageText = ctx.message?.text;

@@ -1,4 +1,4 @@
-const commands = require('../commands');
+const commands = require('../../commands');
 
 module.exports = (ctx) => {
     let response = 'Доступные команды:\n\n';
