@@ -32,7 +32,8 @@ bot.on(message('text'), async (ctx, next) => {
     await next();
 });
 
-// --- Обработка всех сообщений ---
+// --- Обработка событий ---
 bot.on(message(), messageEventHandler);
+bot.on('my_chat_member', require('./handlers/events/myChatMember'));
 
 module.exports = bot;

@@ -1,9 +1,18 @@
 const MessageManager = require('../../db/MessageManager');
+const ChatManager = require('../../db/ChatManager');
 const Message = require('../../db/Message');
 const filterTrigger = require('../triggers/filterTrigger');
 
 module.exports = async function messageEventHandler(ctx) {
+
     const msg = ctx.message;
+    if (msg.chat.type !== 'private') {
+        ChatManager.addIfNotExists({
+            id: msg.chat.id,
+            title: msg.chat.title || '(без названия)',
+            type: msg.chat.type,
+        });
+    }
 
     if (!msg || (!msg.text && !msg.caption)) {
         // Пока обрабатываем только текстовые и подписанные медиа-сообщения
