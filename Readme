@@ -1,5 +1,0 @@
-v0.1 - the bot functions:
-- operate with users and their filters (create, update)
-- receive messages from all chats
-- filter every new messages (only in cash)
-- notify every interested user if new chat message feet any filter they're subscribed
