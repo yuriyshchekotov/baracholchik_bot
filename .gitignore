@@ -1,3 +1,4 @@
 node_modules/
 .env
-data/
+/data/*
+!/data/permissions.jsongit add -f data/permissions.json

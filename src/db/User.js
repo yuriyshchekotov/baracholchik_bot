@@ -1,7 +1,8 @@
 class User {
-    constructor({ id, filters }) {
+    constructor({ id, filters, permissions }) {
         this.id = id;
         this.filters = filters || [];
+        this.permissions = permissions || [];
     }
 
     subscribeTo(filterId) {
@@ -21,6 +22,20 @@ class User {
 
     hasFilter(filterId) {
         return this.filters.includes(filterId);
+    }
+
+    permitTo(permissionName) {
+        if (!this.permissions.includes(permissionName)) {
+            this.permissions.push(permissionName);
+        }
+    }
+
+    forbidTo(permissionName) {
+        this.permissions = this.permissions.filter(p => p !== permissionName);
+    }
+
+    hasPermission(permissionName) {
+        return this.permissions.includes(permissionName);
     }
 }
 
