@@ -1,0 +1,23 @@
+const UserManager = require('../../db/UserManager');
+
+module.exports = async function permitCommand(ctx) {
+    const args = ctx.message.text.split(' ').slice(1);
+    if (args.length !== 2) {
+        return ctx.reply('Использование: /permit <userId> <permission>');
+    }
+
+    const [userIdRaw, permission] = args;
+    const userId = parseInt(userIdRaw, 10);
+    if (isNaN(userId)) {
+        return ctx.reply('userId должен быть числом');
+    }
+
+    const user = UserManager.getById(userId);
+    if (!user) {
+        return ctx.reply('Пользователь не найден');
+    }
+
+    user.permitTo(permission);
+    UserManager.saveUser(user);
+    ctx.reply(`✅ Выдано право "${permission}" пользователю ${userId}`);
+};

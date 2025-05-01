@@ -6,17 +6,24 @@ const helpCommand = require('./handlers/commands/help');
 const subscribeCommand = require('./handlers/commands/subscribe');
 const notifyCommand = require('./handlers/commands/notify');
 const searchCommand = require('./handlers/commands/search');
+const chatsCommand = require('./handlers/commands/chats');
+const permitCommand = require('./handlers/commands/permit');
+const forbidCommand = require('./handlers/commands/forbid');
 
 const messageEventHandler = require('./handlers/events/message');
+const requirePermission = require('./handlers/middleware/requirePermission');
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
 
-// --- Команды ---
-bot.start(startCommand);
-bot.help(helpCommand);
-bot.command('subscribe', subscribeCommand);
-bot.command('notify', notifyCommand);
-bot.command('search', searchCommand);
+// --- Команды и требуемые для них права доступа ---
+bot.command('start', requirePermission('admin_all',startCommand));
+bot.command('help', requirePermission('admin_all',helpCommand));
+bot.command('subscribe', requirePermission('admin_all', subscribeCommand));
+bot.command('notify', requirePermission('admin_all', notifyCommand));
+bot.command('search', requirePermission('admin_all', searchCommand));
+bot.command('chats', requirePermission('admin_all', chatsCommand));
+bot.command('permit', requirePermission('admin_all', permitCommand));
+bot.command('forbid', requirePermission('admin_all', forbidCommand));
 
 // --- Обработка неизвестных команд ---
 bot.on(message('text'), async (ctx, next) => {
