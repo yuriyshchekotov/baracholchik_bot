@@ -33,7 +33,8 @@ class UserManager {
     saveUsers() {
         const plain = this.users.map(user => ({
             id: user.id,
-            filters: user.filters
+            filters: user.filters,
+            permissions: user.permissions
         }));
         fs.writeFileSync(DB_PATH, JSON.stringify(plain, null, 2), 'utf-8');
     }
