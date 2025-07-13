@@ -1,4 +1,4 @@
-module.exports = [
+export default [
     { command: 'start', description: 'Список доступных команд' },
     { command: 'help', description: 'Справка по командам' },
     { command: 'subscribe', description: 'Подписаться на рассылку' },

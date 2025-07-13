@@ -1,4 +1,4 @@
-module.exports = async function searchCommand(ctx) {
+export default async function searchCommand(ctx) {
     const input = ctx.message.text.split(' ').slice(1); // убираем "/search"
 
     if (input.length === 0) {

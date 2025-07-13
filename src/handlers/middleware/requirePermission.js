@@ -1,4 +1,4 @@
-const UserManager = require('../../db/UserManager');
+import UserManager from '../../db/UserManager.js';
 
 function requirePermission(permissionName, handler) {
     return async (ctx) => {
@@ -13,4 +13,4 @@ function requirePermission(permissionName, handler) {
     };
 }
 
-module.exports = requirePermission;
+export default requirePermission;

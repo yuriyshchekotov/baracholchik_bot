@@ -1,19 +1,20 @@
-const { Telegraf } = require('telegraf');
-const { message } = require('telegraf/filters');
+import { Telegraf } from 'telegraf';
+import { message } from 'telegraf/filters';
 
-const startCommand = require('./handlers/commands/start');
-const helpCommand = require('./handlers/commands/help');
-const subscribeCommand = require('./handlers/commands/subscribe');
-const notifyCommand = require('./handlers/commands/notify');
-const searchCommand = require('./handlers/commands/search');
-const chatsCommand = require('./handlers/commands/chats');
-const permitCommand = require('./handlers/commands/permit');
-const forbidCommand = require('./handlers/commands/forbid');
-const subscriptionsCommand = require('./handlers/commands/subscriptions');
-const unsubscribeCommand = require('./handlers/commands/unsubscribe');
-const unsubscribeAllCommand = require('./handlers/commands/unsubscribe-all');
-const messageEventHandler = require('./handlers/events/message');
-const requirePermission = require('./handlers/middleware/requirePermission');
+import startCommand from './handlers/commands/start.js';
+import helpCommand from './handlers/commands/help.js';
+import subscribeCommand from './handlers/commands/subscribe.js';
+import notifyCommand from './handlers/commands/notify.js';
+import searchCommand from './handlers/commands/search.js';
+import chatsCommand from './handlers/commands/chats.js';
+import permitCommand from './handlers/commands/permit.js';
+import forbidCommand from './handlers/commands/forbid.js';
+import subscriptionsCommand from './handlers/commands/subscriptions.js';
+import unsubscribeCommand from './handlers/commands/unsubscribe.js';
+import unsubscribeAllCommand from './handlers/commands/unsubscribe-all.js';
+import messageEventHandler from './handlers/events/message.js';
+import myChatMemberHandler from './handlers/events/myChatMember.js';
+import requirePermission from './handlers/middleware/requirePermission.js';
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
 console.log('🤖 Бот инициализирован');
@@ -51,10 +52,11 @@ bot.on(message('text'), async (ctx, next) => {
 
 // --- Обработка событий ---
 bot.on(message('text'), messageEventHandler);
-bot.on('my_chat_member', require('./handlers/events/myChatMember'));
+bot.on('my_chat_member', myChatMemberHandler);
 
 console.log('📦 Команды загружены и обработчики установлены');
 bot.on('message', (ctx) => {
     console.log('📨 Поймано событие message:', ctx.message);
 });
-module.exports = bot;
+
+export default bot;

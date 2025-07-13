@@ -1,9 +1,9 @@
 
 
-const userManager = require('../../db/UserManager');
-const filterManager = require('../../db/FilterManager');
+import userManager from '../../db/UserManager.js';
+import filterManager from '../../db/FilterManager.js';
 
-module.exports = async function unsubscribeCommand(ctx) {
+export default async function unsubscribeCommand(ctx) {
   const userId = ctx.from.id;
   const args = ctx.message.text.split(' ').slice(1);
 

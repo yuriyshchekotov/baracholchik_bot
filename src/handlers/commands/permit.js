@@ -1,6 +1,6 @@
-const UserManager = require('../../db/UserManager');
+import UserManager from '../../db/UserManager.js';
 
-module.exports = async function permitCommand(ctx) {
+export default async function permitCommand(ctx) {
     const args = ctx.message.text.split(' ').slice(1);
     if (args.length !== 2) {
         return ctx.reply('Использование: /permit <userId> <permission>');

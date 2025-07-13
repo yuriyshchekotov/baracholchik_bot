@@ -1,6 +1,6 @@
-require('dotenv').config();
-const bot = require('./src/bot');
-const commands = require('./src/commands');
+import 'dotenv/config';
+import bot from './src/bot.js';
+import commands from './src/commands.js';
 
 console.log('🔑 BOT_TOKEN =', process.env.BOT_TOKEN ? '[OK]' : '[MISSING]');
 

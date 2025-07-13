@@ -1,6 +1,6 @@
-const UserManager = require('../../db/UserManager');
+import UserManager from '../../db/UserManager.js';
 
-module.exports = async function forbidCommand(ctx) {
+export default async function forbidCommand(ctx) {
     const args = ctx.message.text.split(' ').slice(1);
     if (args.length !== 2) {
         return ctx.reply('Использование: /forbid <userId> <permission>');

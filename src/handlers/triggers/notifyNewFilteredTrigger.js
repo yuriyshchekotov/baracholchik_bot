@@ -1,10 +1,10 @@
-const userManager = require('../../db/UserManager');
+import userManager from '../../db/UserManager.js';
 
 function escapeMarkdown(text) {
     return text.replace(/([_*\[\]()~`>#+\-=|{}.!])/g, '\\$1');
 }
 
-module.exports = async function notifyNewFilteredTrigger(ctx, message, filter) {
+export default async function notifyNewFilteredTrigger(ctx, message, filter) {
     const matchingUsers = userManager.getAll().filter(user =>
         user.hasFilter(filter.id)
     );

@@ -1,6 +1,6 @@
-const ChatManager = require('../../db/ChatManager');
+import ChatManager from '../../db/ChatManager.js';
 
-module.exports = async function chatsCommand(ctx) {
+export default async function chatsCommand(ctx) {
     const chats = ChatManager.getFollowedChats();
 
     if (chats.length === 0) {

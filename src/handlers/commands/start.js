@@ -1,6 +1,6 @@
-const commands = require('../../commands');
+import commands from '../../commands.js';
 
-module.exports = (ctx) => {
+export default (ctx) => {
     let response = 'Доступные команды:\n\n';
     commands.forEach((cmd) => {
         response += `/${cmd.command} – ${cmd.description}\n`;

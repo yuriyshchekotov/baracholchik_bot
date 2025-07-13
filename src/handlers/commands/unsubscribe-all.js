@@ -1,8 +1,8 @@
 
 
-const userManager = require('../../db/UserManager');
+import userManager from '../../db/UserManager.js';
 
-module.exports = async function unsubscribeAllCommand(ctx) {
+export default async function unsubscribeAllCommand(ctx) {
   const userId = ctx.from.id;
   const user = userManager.getById(userId) || userManager.addUserIfNotExists(userId);
 

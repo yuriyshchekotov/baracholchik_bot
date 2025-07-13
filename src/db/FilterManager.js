@@ -1,7 +1,10 @@
-const fs = require('fs');
-const path = require('path');
-const Filter = require('./Filter');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import Filter from './Filter.js';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const DB_PATH = path.join(__dirname, '../../data/filters.json');
 
 class FilterManager {
@@ -66,4 +69,4 @@ class FilterManager {
     }
 }
 
-module.exports = new FilterManager();
+export default new FilterManager();

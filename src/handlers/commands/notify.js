@@ -1,7 +1,7 @@
-const userManager = require('../../db/UserManager');
-const filterManager = require('../../db/FilterManager');
+import userManager from '../../db/UserManager.js';
+import filterManager from '../../db/FilterManager.js';
 
-module.exports = async (ctx) => {
+export default async (ctx) => {
     const messageText = ctx.message?.text;
     if (!messageText) {
         return ctx.reply('Сообщение пустое или не текстовое.');

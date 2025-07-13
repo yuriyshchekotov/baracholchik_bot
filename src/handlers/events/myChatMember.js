@@ -1,6 +1,6 @@
-const ChatManager = require('../../db/ChatManager');
+import ChatManager from '../../db/ChatManager.js';
 
-module.exports = async function myChatMemberHandler(ctx) {
+export default async function myChatMemberHandler(ctx) {
     const payload = ctx.myChatMember;
     if (!payload || !payload.chat || !payload.new_chat_member || !payload.new_chat_member.status) return;
 

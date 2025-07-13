@@ -1,7 +1,7 @@
-const filterManager = require('../../db/FilterManager');
-const notifyNewFilteredTrigger = require('./notifyNewFilteredTrigger');
+import filterManager from '../../db/FilterManager.js';
+import notifyNewFilteredTrigger from './notifyNewFilteredTrigger.js';
 
-module.exports = async function filterTrigger(ctx, message) {
+export default async function filterTrigger(ctx, message) {
     if (!message || !message.text) {
         return; // Нет текста — нечего фильтровать
     }

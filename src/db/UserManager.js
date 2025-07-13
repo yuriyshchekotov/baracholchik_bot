@@ -1,7 +1,10 @@
-const fs = require('fs');
-const path = require('path');
-const User = require('./User');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import User from './User.js';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const DB_PATH = path.join(__dirname, '../../data/users.json');
 
 class UserManager {
@@ -69,4 +72,4 @@ class UserManager {
     }
 }
 
-module.exports = new UserManager();
+export default new UserManager();

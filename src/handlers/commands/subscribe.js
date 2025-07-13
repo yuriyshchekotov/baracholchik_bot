@@ -1,5 +1,5 @@
-const userManager = require('../../db/UserManager');
-const filterManager = require('../../db/FilterManager');
+import userManager from '../../db/UserManager.js';
+import filterManager from '../../db/FilterManager.js';
 
 function generateFilterName(keywords, conjunction) {
     if (keywords.length === 1) return keywords[0];
@@ -22,7 +22,7 @@ function isSameFilter(f1, f2) {
     return true;
 }
 
-module.exports = async function subscribeCommand(ctx) {
+export default async function subscribeCommand(ctx) {
     const text = ctx.message.text;
     const parts = text.split(' ').slice(1); // отрезаем "/subscribe"
 

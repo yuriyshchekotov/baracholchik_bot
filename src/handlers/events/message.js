@@ -1,9 +1,11 @@
-const MessageManager = require('../../db/MessageManager');
-const ChatManager = require('../../db/ChatManager');
-const Message = require('../../db/Message');
-const filterTrigger = require('../triggers/filterTrigger');
+import MessageManager from '../../db/MessageManager.js';
+import ChatManager from '../../db/ChatManager.js';
+import Message from '../../db/Message.js';
+import filterTrigger from '../triggers/filterTrigger.js';
+
 console.log('📨 Вошли в messageEventHandler');
-module.exports = async function messageEventHandler(ctx) {
+
+export default async function messageEventHandler(ctx) {
 
     const msg = ctx.message;
     if (msg.chat.type !== 'private') {

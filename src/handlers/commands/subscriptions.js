@@ -1,9 +1,9 @@
 
 
-const userManager = require('../../db/UserManager');
-const filterManager = require('../../db/FilterManager');
+import userManager from '../../db/UserManager.js';
+import filterManager from '../../db/FilterManager.js';
 
-module.exports = async function subscriptionsCommand(ctx) {
+export default async function subscriptionsCommand(ctx) {
   const userId = ctx.from.id;
   const user = userManager.getById(userId) || userManager.addUserIfNotExists(userId);
   const userFilters = user.filters;
