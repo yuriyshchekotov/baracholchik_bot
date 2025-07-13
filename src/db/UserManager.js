@@ -21,7 +21,13 @@ class UserManager {
     loadUsers() {
         const data = fs.readFileSync(DB_PATH, 'utf-8');
         const rawUsers = JSON.parse(data);
-        this.users = rawUsers.map(obj => new User(obj));
+        this.users = rawUsers.map(obj =>
+            new User({
+                id: Number(obj.id),
+                filters: obj.filters,
+                permissions: obj.permissions
+            })
+        );
     }
 
     saveUsers() {
@@ -31,6 +37,8 @@ class UserManager {
         }));
         fs.writeFileSync(DB_PATH, JSON.stringify(plain, null, 2), 'utf-8');
     }
+
+
 
     getAll() {
         return this.users;
@@ -52,6 +60,7 @@ class UserManager {
 
     saveUser(user) {
         const index = this.users.findIndex(u => u.id === user.id);
+        console.log(`[SAVE] user.id: ${user.id}, matched index: ${index}`);
         if (index !== -1) {
             this.users[index] = user;
             this.saveUsers();
