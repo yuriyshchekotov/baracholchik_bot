@@ -1,5 +1,25 @@
+# Node.js dependencies
 node_modules/
+
+# Compiled output
+dist/
+
+# Environment variables
 .env
-dist
+
+# Logs and debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Data files — игнорировать всё, кроме нужного
 /data/*
-!/data/permissions.jsongit add -f data/permissions.json
+!/data/permissions.json
+
+# Бэкапы
+*.bak
+*.tmp
