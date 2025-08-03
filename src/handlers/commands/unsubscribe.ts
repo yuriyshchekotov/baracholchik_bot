@@ -46,13 +46,18 @@ const unsubscribeCommand = async (ctx: BotContext): Promise<void> => {
     return;
   }
 
+  const removedNames: string[] = [];
   for (const id of toRemove) {
     user.unsubscribeFrom(id);
+    const filter = FilterManager.getById(id);
+    if (filter) {
+      removedNames.push(filter.name);
+    }
   }
 
   UserManager.saveUser(user);
 
-  await ctx.reply(`Вы отписались от фильтров: ${toRemove.join(', ')}`);
+  await ctx.reply(`Вы отписались от фильтров: ${removedNames.join(', ')}`);
 };
 
 export default unsubscribeCommand; 
