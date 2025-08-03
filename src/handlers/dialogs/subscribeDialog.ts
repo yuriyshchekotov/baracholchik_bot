@@ -1,7 +1,7 @@
 import type { BotContext } from '../../types';
-import SessionManager from '../../db/SessionManager';
+import SessionManager from "../../db/SessionManager";
 import {Session} from "../../db/Session";
-import { subscribeUserToFilter } from '../triggers/subscribeTrigger.js';
+import { subscribeUserToFilter } from '../triggers/subscribeTrigger';
 
 export default async function handleSubscribeDialog(ctx: BotContext, session: Session): Promise<void> {
   const userId = ctx.from?.id;

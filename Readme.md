@@ -51,33 +51,60 @@ This is a **learning-focused Node.js Telegram bot**, built to help understand an
 
 ```bash
 .
-├── data/
-│   ├── chats.json            # tracked chats
-│   ├── filtered.json         # (reserved for filtered messages)
-│   ├── filters.json          # keyword filters
-│   ├── messages.json         # all received messages
-│   ├── permissions.json      # known permissions (id, name, description)
-│   └── users.json            # user subscriptions and permissions
-├── src/
-│   ├── bot.js                # bot setup and event registration
-│   ├── commands.js           # command list definition
-│   ├── db/                   # JSON-backed model managers
-│   │   ├── ChatManager.js
-│   │   ├── FilterManager.js
-│   │   ├── MessageManager.js
-│   │   ├── UserManager.js
-│   │   ├── Filter.js
-│   │   ├── Message.js
-│   │   └── User.js
-│   ├── handlers/
-│   │   ├── commands/         # command implementations
-│   │   ├── events/           # Telegram update handlers (e.g., messages, status changes)
-│   │   ├── middleware/       # permission checks
-│   │   ├── triggers/         # reactive logic (e.g., message filtering)
-│   │   └── errors/           # (reserved for error handling)
-├── index.js                  # app entry point
+├── Dockerfile
+├── Readme.md
+├── data
+│   ├── chats.json
+│   ├── filters.json
+│   ├── messages.json
+│   ├── permissions.json
+│   └── users.json
+├── debugSend.ts
+├── index.ts
 ├── package.json
-└── README.md
+├── src
+│   ├── bot.ts
+│   ├── commands.ts
+│   ├── db
+│   │   ├── ChatManager.ts
+│   │   ├── Filter.ts
+│   │   ├── FilterManager.ts
+│   │   ├── Message.ts
+│   │   ├── MessageManager.ts
+│   │   ├── Session.ts
+│   │   ├── SessionManager.ts
+│   │   ├── User.ts
+│   │   └── UserManager.ts
+│   ├── handlers
+│   │   ├── callbacks
+│   │   ├── commands
+│   │   │   ├── chats.ts
+│   │   │   ├── forbid.ts
+│   │   │   ├── help.ts
+│   │   │   ├── notify.ts
+│   │   │   ├── permit.ts
+│   │   │   ├── search.ts
+│   │   │   ├── start.ts
+│   │   │   ├── subscribe.ts
+│   │   │   ├── subscriptions.ts
+│   │   │   ├── unsubscribe-all.ts
+│   │   │   └── unsubscribe.ts
+│   │   ├── dialogs
+│   │   │   └── subscribeDialog.ts
+│   │   ├── errors
+│   │   ├── events
+│   │   │   ├── message.ts
+│   │   │   └── myChatMember.ts
+│   │   ├── middleware
+│   │   │   └── requirePermission.ts
+│   │   └── triggers
+│   │       ├── filterTrigger.ts
+│   │       ├── notifyNewFilteredTrigger.ts
+│   │       └── subscribeTrigger.ts
+│   └── types
+│       └── index.ts
+└── tsconfig.json
+
 ```
 
 ---
