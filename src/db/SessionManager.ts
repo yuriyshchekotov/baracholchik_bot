@@ -4,7 +4,8 @@ import Session from './Session';
 import type { Session as SessionType } from './Session';
 import type { DialogCommand } from '../types';
 
-const SESSIONS_PATH = path.join(__dirname, '../../data/sessions.json');
+// Fix the path to point to the source data directory, not the dist directory
+const SESSIONS_PATH = path.join(process.cwd(), 'data/sessions.json');
 
 class SessionManager {
   private sessions: Map<number, Session> = new Map();

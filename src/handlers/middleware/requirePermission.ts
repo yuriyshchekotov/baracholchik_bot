@@ -10,12 +10,19 @@ const requirePermission: MiddlewareFunction = (permissionName: string, handler: 
       return;
     }
 
-    const user = UserManager.getById(userId);
+    let user = UserManager.getById(userId);
+    
+    // If user doesn't exist, create them (this will load from users.json if they exist there)
+    if (!user) {
+      user = UserManager.addUserIfNotExists(userId);
+    }
+    
     if (!user || !user.hasPermission(permissionName)) {
       console.log(`❌ Permission denied: User ${userId} doesn't have permission '${permissionName}'`);
       await ctx.reply('У вас нет прав для выполнения этой команды 🔒');
       return;
     }
+    
     return handler(ctx);
   };
 };

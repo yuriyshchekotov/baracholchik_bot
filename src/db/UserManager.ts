@@ -2,7 +2,8 @@ import fs from 'fs';
 import path from 'path';
 import User from './User';
 
-const DB_PATH = path.join(__dirname, '../../data/users.json');
+// Fix the path to point to the source data directory, not the dist directory
+const DB_PATH = path.join(process.cwd(), 'data/users.json');
 
 interface UserData {
   id: number;
@@ -29,6 +30,7 @@ class UserManager {
     try {
       const data = fs.readFileSync(DB_PATH, 'utf-8');
       const rawUsers: UserData[] = JSON.parse(data);
+      
       this.users = rawUsers.map(obj =>
         new User({
           id: Number(obj.id),
@@ -37,7 +39,7 @@ class UserManager {
         })
       );
     } catch (error) {
-      console.error('Error loading users:', error);
+      console.error('❌ Error loading users:', error);
       this.users = [];
     }
   }

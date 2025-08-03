@@ -3,8 +3,8 @@ import path from 'path';
 import Message from './Message';
 import type { MessageData } from '../types';
 
-// __dirname доступен в CommonJS напрямую — НИКАКОГО fileURLToPath НЕ НУЖНО
-const DB_PATH = path.join(__dirname, '../../data/messages.json');
+// Fix the path to point to the source data directory, not the dist directory
+const DB_PATH = path.join(process.cwd(), 'data/messages.json');
 
 class MessageManager {
   private messages: Message[] = [];

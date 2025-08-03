@@ -21,12 +21,12 @@ const bot = new Telegraf<BotContext>(process.env.BOT_TOKEN!);
 console.log('🤖 Бот инициализирован');
 
 // --- Команды и требуемые для них права доступа ---
-bot.command('start', requirePermission('admin_all', startCommand));
-bot.command('help', requirePermission('admin_all', helpCommand));
+bot.command('start', startCommand);
+bot.command('help', helpCommand);
 bot.command('subscriptions', subscriptionsCommand);
-bot.command('subscribe', requirePermission('admin_all', subscribeCommand));
-bot.command('unsubscribe', requirePermission('admin_all', unsubscribeCommand));
-bot.command('unsubscribe-all', requirePermission('admin_all', unsubscribeAllCommand));
+bot.command('subscribe', subscribeCommand);
+bot.command('unsubscribe', unsubscribeCommand);
+bot.command('unsubscribe-all', unsubscribeAllCommand);
 bot.command('notify', requirePermission('admin_all', notifyCommand));
 bot.command('search', requirePermission('admin_all', searchCommand));
 bot.command('chats', requirePermission('admin_all', chatsCommand));
