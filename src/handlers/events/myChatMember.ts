@@ -1,5 +1,5 @@
-import { BotContext } from '../../types/index.js';
-import ChatManager from '../../db/ChatManager.js';
+import type { BotContext } from '../../types';
+import ChatManager from '../../db/ChatManager';
 
 const myChatMemberHandler = async (ctx: BotContext): Promise<void> => {
   const payload = ctx.myChatMember;

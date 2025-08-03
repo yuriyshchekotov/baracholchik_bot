@@ -1,4 +1,4 @@
-import { BotContext } from '../types/index.js';
+import type { BotContext } from '../types';
 
 interface UserConstructor {
   id: number;

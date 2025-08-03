@@ -1,5 +1,5 @@
-import { BotContext } from '../../types/index.js';
-import commands from '../../commands.js';
+import type { BotContext } from '../../types';
+import commands from '../../commands';
 
 const helpCommand = (ctx: BotContext): void => {
   let response = 'Справка по командам:\n\n';

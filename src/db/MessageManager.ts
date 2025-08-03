@@ -1,24 +1,10 @@
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
-import Message from './Message.js';
+import Message from './Message';
+import type { MessageData } from '../types';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// __dirname доступен в CommonJS напрямую — НИКАКОГО fileURLToPath НЕ НУЖНО
 const DB_PATH = path.join(__dirname, '../../data/messages.json');
-
-interface MessageData {
-  messageId: number;
-  chatId: number;
-  from: {
-    id: number;
-    username?: string;
-    first_name?: string;
-    last_name?: string;
-  };
-  text: string;
-  date: string;
-}
 
 class MessageManager {
   private messages: Message[] = [];
@@ -67,4 +53,4 @@ class MessageManager {
   }
 }
 
-export default new MessageManager(); 
+export default new MessageManager();

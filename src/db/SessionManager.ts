@@ -1,7 +1,7 @@
 import { promises as fs } from 'fs';
 import path from 'path';
-import Session from './Session.js';
-import type { Session as SessionType } from './Session.js';
+import Session from './Session';
+import type { Session as SessionType } from './Session';
 import type { DialogCommand } from '../types';
 
 const SESSIONS_PATH = path.join(__dirname, '../../data/sessions.json');

@@ -1,5 +1,5 @@
-import { BotContext } from '../../types/index.js';
-import UserManager from '../../db/UserManager.js';
+import type { BotContext } from '../../types';
+import UserManager from '../../db/UserManager';
 
 const forbidCommand = async (ctx: BotContext): Promise<void> => {
   if (!ctx.message || !('text' in ctx.message)) {

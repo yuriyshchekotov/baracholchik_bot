@@ -1,21 +1,21 @@
 import { Telegraf } from 'telegraf';
 import { message } from 'telegraf/filters';
 
-import { BotContext, HandlerFunction } from './types/index.js';
-import startCommand from './handlers/commands/start.js';
-import helpCommand from './handlers/commands/help.js';
-import subscribeCommand from './handlers/commands/subscribe.js';
-import notifyCommand from './handlers/commands/notify.js';
-import searchCommand from './handlers/commands/search.js';
-import chatsCommand from './handlers/commands/chats.js';
-import permitCommand from './handlers/commands/permit.js';
-import forbidCommand from './handlers/commands/forbid.js';
-import subscriptionsCommand from './handlers/commands/subscriptions.js';
-import unsubscribeCommand from './handlers/commands/unsubscribe.js';
-import unsubscribeAllCommand from './handlers/commands/unsubscribe-all.js';
-import messageEventHandler from './handlers/events/message.js';
-import myChatMemberHandler from './handlers/events/myChatMember.js';
-import requirePermission from './handlers/middleware/requirePermission.js';
+import type { BotContext, HandlerFunction } from './types';
+import startCommand from './handlers/commands/start';
+import helpCommand from './handlers/commands/help';
+import subscribeCommand from './handlers/commands/subscribe';
+import notifyCommand from './handlers/commands/notify';
+import searchCommand from './handlers/commands/search';
+import chatsCommand from './handlers/commands/chats';
+import permitCommand from './handlers/commands/permit';
+import forbidCommand from './handlers/commands/forbid';
+import subscriptionsCommand from './handlers/commands/subscriptions';
+import unsubscribeCommand from './handlers/commands/unsubscribe';
+import unsubscribeAllCommand from './handlers/commands/unsubscribe-all';
+import messageEventHandler from './handlers/events/message';
+import myChatMemberHandler from './handlers/events/myChatMember';
+import requirePermission from './handlers/middleware/requirePermission';
 
 const bot = new Telegraf<BotContext>(process.env.BOT_TOKEN!);
 console.log('🤖 Бот инициализирован');

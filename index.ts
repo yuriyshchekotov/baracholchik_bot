@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import { config } from 'dotenv';
-import bot from './src/bot.js';
-import commands from './src/commands.js';
+import bot from './src/bot';
+import commands from './src/commands';
 
 config();
 

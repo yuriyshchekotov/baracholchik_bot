@@ -1,10 +1,7 @@
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
-import Filter from './Filter.js';
+import Filter from './Filter';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 const DB_PATH = path.join(__dirname, '../../data/filters.json');
 
 interface FilterData {

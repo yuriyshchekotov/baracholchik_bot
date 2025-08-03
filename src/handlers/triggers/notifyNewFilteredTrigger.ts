@@ -1,7 +1,7 @@
-import { BotContext } from '../../types/index.js';
-import UserManager from '../../db/UserManager.js';
-import Message from '../../db/Message.js';
-import Filter from '../../db/Filter.js';
+import type { BotContext } from '../../types';
+import UserManager from '../../db/UserManager';
+import Message from '../../db/Message';
+import Filter from '../../db/Filter';
 
 function escapeMarkdown(text: string): string {
   return text.replace(/([_*\[\]()~`>#+\-=|{}.!])/g, '\\$1');

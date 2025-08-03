@@ -1,6 +1,6 @@
-import { BotContext } from '../../types/index.js';
-import UserManager from '../../db/UserManager.js';
-import FilterManager from '../../db/FilterManager.js';
+import type { BotContext } from '../../types';
+import UserManager from '../../db/UserManager';
+import FilterManager from '../../db/FilterManager';
 
 const subscriptionsCommand = async (ctx: BotContext): Promise<void> => {
   if (!ctx.from?.id) {

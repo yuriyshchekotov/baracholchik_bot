@@ -1,5 +1,5 @@
-import { BotContext } from '../../types/index.js';
-import UserManager from '../../db/UserManager.js';
+import type { BotContext } from '../../types';
+import UserManager from '../../db/UserManager';
 
 const unsubscribeAllCommand = async (ctx: BotContext): Promise<void> => {
   if (!ctx.from?.id) {

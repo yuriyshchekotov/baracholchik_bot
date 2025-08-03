@@ -1,4 +1,4 @@
-import { BotContext } from '../../types/index.js';
+import type { BotContext } from '../../types';
 
 const searchCommand = async (ctx: BotContext): Promise<void> => {
   if (!ctx.message || !('text' in ctx.message)) {

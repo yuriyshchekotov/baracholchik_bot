@@ -1,8 +1,8 @@
-import { BotContext } from '../../types/index.js';
-import FilterManager from '../../db/FilterManager.js';
-import Message from '../../db/Message.js';
-import Filter from '../../db/Filter.js';
-import notifyNewFilteredTrigger from './notifyNewFilteredTrigger.js';
+import type { BotContext } from '../../types';
+import FilterManager from '../../db/FilterManager';
+import Message from '../../db/Message';
+import Filter from '../../db/Filter';
+import notifyNewFilteredTrigger from './notifyNewFilteredTrigger';
 
 const filterTrigger = async (ctx: BotContext, message: Message): Promise<void> => {
   if (!message || !message.text) {

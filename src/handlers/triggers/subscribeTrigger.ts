@@ -1,8 +1,8 @@
 
 
-import UserManager from '../../db/UserManager.js';
-import FilterManager from '../../db/FilterManager.js';
-import Filter from '../../db/Filter.js';
+import UserManager from '../../db/UserManager';
+import FilterManager from '../../db/FilterManager';
+import Filter from '../../db/Filter';
 
 export function generateFilterName(keywords: string[], conjunction: boolean): string {
   if (keywords.length === 1) return keywords[0];

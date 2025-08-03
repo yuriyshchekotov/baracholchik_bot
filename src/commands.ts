@@ -1,4 +1,4 @@
-import { Command } from './types/index.js';
+import type { Command } from './types';
 
 const commands: Command[] = [
     { command: 'start', description: 'Список доступных команд' },

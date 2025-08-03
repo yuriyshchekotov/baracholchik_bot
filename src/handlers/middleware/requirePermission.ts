@@ -1,5 +1,5 @@
-import { BotContext, HandlerFunction, MiddlewareFunction } from '../../types/index.js';
-import UserManager from '../../db/UserManager.js';
+import type { BotContext, HandlerFunction, MiddlewareFunction } from '../../types';
+import UserManager from '../../db/UserManager';
 
 const requirePermission: MiddlewareFunction = (permissionName: string, handler: HandlerFunction) => {
   return async (ctx: BotContext) => {

@@ -1,10 +1,10 @@
-import SessionManager from '../../db/SessionManager.js';
-import handleSubscribeDialog from '../dialogs/subscribeDialog.js';
-import { BotContext } from '../../types/index.js';
-import MessageManager from '../../db/MessageManager.js';
-import ChatManager from '../../db/ChatManager.js';
-import Message from '../../db/Message.js';
-import filterTrigger from '../triggers/filterTrigger.js';
+import SessionManager from '../../db/SessionManager';
+import handleSubscribeDialog from '../dialogs/subscribeDialog';
+import type { BotContext } from '../../types';
+import MessageManager from '../../db/MessageManager';
+import ChatManager from '../../db/ChatManager';
+import Message from '../../db/Message';
+import filterTrigger from '../triggers/filterTrigger';
 
 console.log('📨 Вошли в messageEventHandler');
 
