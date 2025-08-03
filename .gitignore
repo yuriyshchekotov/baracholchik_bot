@@ -1,4 +1,5 @@
 node_modules/
 .env
+dist
 /data/*
 !/data/permissions.jsongit add -f data/permissions.json
