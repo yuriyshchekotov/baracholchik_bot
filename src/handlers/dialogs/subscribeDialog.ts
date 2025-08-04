@@ -18,9 +18,10 @@ export default async function handleSubscribeDialog(ctx: BotContext, session: Se
   switch (session.step) {
     case 'start':
     case 'askKeywords': {
-      const keywords = text.split(',').map(s => s.trim()).filter(Boolean);
+      const normalizedText = text.replace(/,/g, ' ').replace(/\s+/g, ' ').trim();
+      const keywords = normalizedText.split(' ').filter(Boolean);
       if (keywords.length === 0) {
-        await ctx.reply('Пожалуйста, укажи хотя бы одно ключевое слово через запятую.');
+        await ctx.reply('Пожалуйста, укажи хотя бы одно ключевое слово. Можно указать сразу несколько, через запятую или через пробел. Я смогу искать как строго по всем словам сразу, так и по любому из слов');
         return;
       }
 
