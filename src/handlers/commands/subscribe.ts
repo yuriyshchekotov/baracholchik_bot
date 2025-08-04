@@ -25,7 +25,9 @@ const subscribeCommand = async (ctx: BotContext): Promise<void> => {
   }
 
   const conjunction = parts.includes('-and');
-  const keywords = parts.filter(p => p !== '-and');
+  const keywords = parts
+    .filter(p => p !== '-and')
+    .map(k => k.includes('+') ? k.replace(/\+/g, ' ') : k);
 
   if (keywords.length === 0) {
     await ctx.reply('Нужно указать хотя бы одно ключевое слово.');
