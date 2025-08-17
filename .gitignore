@@ -17,8 +17,8 @@ yarn-error.log*
 Thumbs.db
 
 # Data files — игнорировать всё, кроме нужного
-/data/*
-!/data/permissions.json
+/src/data/*
+!/src/data/permissions.json
 
 # Бэкапы
 *.bak

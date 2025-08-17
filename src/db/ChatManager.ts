@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 // Fix the path to point to the source data directory, not the dist directory
-const DB_PATH = path.join(process.cwd(), 'data/chats.json');
+const DB_PATH = path.join(process.cwd(), 'src/data/chats.json');
 
 interface Chat {
   id: number;

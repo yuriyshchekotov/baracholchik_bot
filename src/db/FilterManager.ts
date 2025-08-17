@@ -3,7 +3,7 @@ import path from 'path';
 import Filter from './Filter';
 
 // Fix the path to point to the source data directory, not the dist directory
-const DB_PATH = path.join(process.cwd(), 'data/filters.json');
+const DB_PATH = path.join(process.cwd(), 'src/data/filters.json');
 
 interface FilterData {
   id: string;
