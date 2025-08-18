@@ -1,11 +1,12 @@
 
 
-import type { DialogCommand } from '../types';
+import type { DialogCommand, SessionStep } from '../types';
+
 
 export interface SessionConstructor {
   userId: number;
   command: DialogCommand;
-  step?: string;
+  step?: SessionStep;
   data?: Record<string, any>;
   createdAt?: string;
   updatedAt?: string;
@@ -14,7 +15,7 @@ export interface SessionConstructor {
 class Session {
   public userId: number;
   public command: DialogCommand;
-  public step: string;
+  public step: SessionStep;
   public data: Record<string, any>;
   public createdAt: string;
   public updatedAt: string;

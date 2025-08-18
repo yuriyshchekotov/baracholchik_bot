@@ -16,21 +16,49 @@ export default async function handleSubscribeDialog(ctx: BotContext, session: Se
   }
 
   switch (session.step) {
-    case 'start':
+    case 'start': {
+      // This is the initial step - just ask for keywords and move to next step
+      await ctx.reply('Пожалуйста, укажи хотя бы одно ключевое слово. Можно указать сразу несколько, через запятую или через пробел. Я смогу искать как строго по всем словам сразу, так и по любому из слов');
+      SessionManager.update(userId, { step: 'askKeywords' });
+      return;
+    }
+    
     case 'askKeywords': {
       const normalizedText = text.replace(/,/g, ' ').replace(/\s+/g, ' ').trim();
       const keywords = normalizedText.split(' ').filter(Boolean);
+      const hasCompound = normalizedText.includes('+');
+
       if (keywords.length === 0) {
         await ctx.reply('Пожалуйста, укажи хотя бы одно ключевое слово. Можно указать сразу несколько, через запятую или через пробел. Я смогу искать как строго по всем словам сразу, так и по любому из слов');
         return;
       }
+
+      if (keywords.length === 1 && !hasCompound) {
+        const result = subscribeUserToFilter(userId, keywords, false);
+        SessionManager.end(userId);
+
+        if (result.status === 'alreadyExists') {
+          await ctx.reply('Ты уже подписан на такой фильтр.');
+        } else {
+          await ctx.reply(`Фильтр "${result.name}" создан и добавлен в твою подписку.`);
+        }
+        return;
+      }
+
+      await ctx.reply('Выбери режим фильтрации:', {
+        reply_markup: {
+          inline_keyboard: [
+            [{ text: 'И', callback_data: 'filter_mode_and' }],
+            [{ text: 'ИЛИ', callback_data: 'filter_mode_or' }]
+          ]
+        }
+      });
 
       SessionManager.update(userId, {
         step: 'askAndOr',
         data: { keywords }
       });
 
-      await ctx.reply('Искать все слова или любое из них*? Варианты ответа: \N и - все слова должны быть в одном сообщении (в любом порядке) \N или достаточно одного слова \N *Если вы указывали слова через плюс, они в любом случае будут искаться как одно');
       return;
     }
 
@@ -44,7 +72,21 @@ export default async function handleSubscribeDialog(ctx: BotContext, session: Se
       }
 
       const result = subscribeUserToFilter(userId, keywords, conjunction);
+      SessionManager.end(userId);
 
+      if (result.status === 'alreadyExists') {
+        await ctx.reply('Ты уже подписан на такой фильтр.');
+      } else {
+        await ctx.reply(`Фильтр "${result.name}" создан и добавлен в твою подписку.`);
+      }
+      return;
+    }
+
+    case 'askAndOrConfirmed': {
+      const keywords = session.data.keywords;
+      const conjunction = session.data.conjunction ?? false;
+
+      const result = subscribeUserToFilter(userId, keywords, conjunction);
       SessionManager.end(userId);
 
       if (result.status === 'alreadyExists') {

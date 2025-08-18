@@ -1,9 +1,16 @@
 import type { BotContext } from '../../types';
-import commands from '../../commands';
+import { getAvailableCommands } from '../../commands';
 
 const helpCommand = (ctx: BotContext): void => {
+  const userId = ctx.from?.id;
+  if (!userId) {
+    ctx.reply('Ошибка: не удалось определить пользователя.');
+    return;
+  }
+
+  const availableCommands = getAvailableCommands(userId);
   let response = 'Справка по командам:\n\n';
-  commands.forEach((cmd) => {
+  availableCommands.forEach((cmd) => {
     response += `/${cmd.command} – ${cmd.description}\n`;
   });
 

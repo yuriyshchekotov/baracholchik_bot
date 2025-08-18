@@ -39,13 +39,19 @@ export interface MessageData {
 export interface Command {
   command: string;
   description: string;
+  permission?: string; // null or undefined for public commands
 }
-
+export type SessionStep =
+    | 'start'
+    | 'askKeywords'
+    | 'askAndOr'
+    | 'askAndOrConfirmed'
+    | 'nextStep';
 // Handler function type
 export type HandlerFunction = (ctx: BotContext) => Promise<void> | void;
 
 // Middleware function type
-export type MiddlewareFunction = (permissionName: string, handler: HandlerFunction) => HandlerFunction;
+export type MiddlewareFunction = (ctx: BotContext, next: () => Promise<void>) => Promise<void>;
 
 // Bot instance type
 export type BotInstance = Telegraf<BotContext>;
